@@ -9,6 +9,11 @@ on:
         description: Release tag to publish, for example v0.1.0
         required: true
         type: string
+      dry_run:
+        description: Verify the tagged package without publishing
+        required: true
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -79,4 +84,5 @@ jobs:
       # npm Trusted Publishing exchanges this job's short-lived GitHub OIDC
       # identity for a publish credential. No NPM_TOKEN secret is required.
       - name: Publish public package with npm Trusted Publishing
+        if: github.event_name == 'release' || inputs.dry_run == false
         run: npm publish --access public
