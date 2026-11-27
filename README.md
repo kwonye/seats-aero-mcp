@@ -80,6 +80,12 @@ GitHub owner `kwonye`, repository `seats-aero-mcp`, and workflow filename
 `release.yml`; then remove any temporary npm token and use Trusted Publishing
 for subsequent releases.
 
+Version `0.1.0` is already published and cannot be published again. To verify
+the release workflow without publishing, run the Release workflow manually
+with an existing tag and leave `dry_run` enabled. A published GitHub release
+always attempts publication; a manual run publishes only when `dry_run` is
+disabled. To publish changes, create a new, unused version tag and release.
+
 With npm CLI 11.15 or newer, the trusted publisher can be configured with:
 
 ```sh
